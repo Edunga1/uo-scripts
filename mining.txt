@@ -1,0 +1,151 @@
+// set minigerror
+if not listexists 'miningerrormessages'
+  createlist 'miningerrormessages'
+  pushlist 'miningerrormessages' 'no metal here'
+  pushlist 'miningerrormessages' "You can't mine there"
+  pushlist 'miningerrormessages' "Target cannot be seen"
+  pushlist 'miningerrormessages' "You can't mine that"
+endif
+// set mnpoints
+if not listexists 'mnpoints'
+  createlist 'mnpoints'
+  pushlist 'mnpoints' '0x410bbdda'
+  pushlist 'mnpoints' '0x411a957e'
+  pushlist 'mnpoints' '0x40a7d596'
+  pushlist 'mnpoints' '0x421ac392'
+  pushlist 'mnpoints' '0x41252141'
+  pushlist 'mnpoints' '0x41252141'
+  pushlist 'mnpoints' '0x42110bc3'
+endif
+// set fire
+if not findalias 'fire'
+  promptalias 'fire'
+endif
+if diffweight < 20
+  while not inrange 'fire' 1
+    if @x 'fire' > x 'self' and @y 'fire' > y 'self'
+      walk 'Southeast'
+    elseif @x 'fire' < x 'self' and @y 'fire' > y 'self'
+      walk 'Southwest'
+    elseif @x 'fire' > x 'self' and @y 'fire' < y 'self'
+      walk 'Northeast'
+    elseif @x 'fire' < x 'self' and @y 'fire' < y 'self'
+      walk 'Northwest'
+    elseif @x 'fire' > x 'self' and @y 'fire' == y 'self'
+      walk 'East'
+    elseif @x 'fire' < x 'self' and @y 'fire' == y 'self'
+      walk 'West'
+    elseif @x 'fire' == x 'self' and @y 'fire' > y 'self'
+      walk 'South'
+    elseif @x 'fire' == x 'self' and @y 'fire' < y 'self'
+      walk 'North'
+    endif
+    pause 500
+  endwhile
+  while @findtype 0x19b9 'any' 'backpack
+    useobject 'found'
+    target 'fire'
+    pause 500
+  endwhile
+endif
+// check ore out
+if @injournal 'no metal' 'system'
+  for 0 in 3
+    if direction == 0
+      walk "North"
+    elseif direction == 1
+      walk "Northeast"
+    elseif direction == 2
+      walk "East"
+    elseif direction == 3
+      walk "Southeast"
+    elseif direction == 4
+      walk "South"
+    elseif direction == 5
+      walk "Southwest"
+    elseif direction == 6
+      walk "West"
+    elseif direction == 7
+      walk "Northwest"
+    endif
+    pause 500
+  endfor
+  @clearjournal
+endif
+// main
+if @findtype 0xe86 'any' 'backpack' or @findtype 0xf39 'any' 'backpack'
+  useobject 'found'
+else
+  sysmsg "You do not have any digging tools!"
+  stop
+endif
+waitfortarget 500
+if direction == 0
+  targettileoffset 0 -1 0
+elseif direction == 1
+  targettileoffset 1 -1 0
+elseif direction == 2
+  targettileoffset 1 0 0
+elseif direction == 3
+  targettileoffset 1 1 0
+elseif direction == 4
+  targettileoffset 0 1 0
+elseif direction == 5
+  targettileoffset -1 1 0
+elseif direction == 6
+  targettileoffset -1 0 0
+elseif direction == 7
+  targettileoffset -1 -1 0
+endif
+pause 200
+if @findtype 0xe86 'any' 'backpack' or @findtype 0xf39 'any' 'backpack'
+  useobject 'found'
+else
+  sysmsg "You do not have any digging tools!"
+  stop
+endif
+waitfortarget 500
+if direction == 1
+  targettileoffset 0 -1 0
+elseif direction == 2
+  targettileoffset 1 -1 0
+elseif direction == 3
+  targettileoffset 1 0 0
+elseif direction == 4
+  targettileoffset 1 1 0
+elseif direction == 5
+  targettileoffset 0 1 0
+elseif direction == 6
+  targettileoffset -1 1 0
+elseif direction == 7
+  targettileoffset -1 0 0
+elseif direction == 0
+  targettileoffset -1 -1 0
+endif
+pause 200
+if @findtype 0xe86 'any' 'backpack' or @findtype 0xf39 'any' 'backpack'
+  useobject 'found'
+else
+  sysmsg "You do not have any digging tools!"
+  stop
+endif
+waitfortarget 500
+if direction == 7
+  targettileoffset 0 -1 0
+elseif direction == 0
+  targettileoffset 1 -1 0
+elseif direction == 1
+  targettileoffset 1 0 0
+elseif direction == 2
+  targettileoffset 1 1 0
+elseif direction == 3
+  targettileoffset 0 1 0
+elseif direction == 4
+  targettileoffset -1 1 0
+elseif direction == 5
+  targettileoffset -1 0 0
+elseif direction == 6
+  targettileoffset -1 -1 0
+endif
+pause 10
+
