@@ -1,0 +1,7 @@
+set #targCurs 1
+target 10s
+while #targCurs = 1
+{
+}
+finditem #ltargetid
+halt
