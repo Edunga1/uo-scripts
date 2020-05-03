@@ -1,0 +1,35 @@
+if not findalias pet or not findobject pet
+  promptalias pet
+endif
+while not dead self
+  if not @findobject pet
+    continue
+  endif
+  if hits pet >= 100
+    continue
+  endif
+  if not @inrange pet 2
+    continue
+  endif
+  usetype 0xe21 any backpack
+  @target pet
+  pause 2500
+endwhile
+if not findalias pet or not findobject pet
+  promptalias pet
+endif
+while not dead self
+  if not @findobject pet
+    continue
+  endif
+  if hits pet >= 100
+    continue
+  endif
+  if not @inrange pet 2
+    continue
+  endif
+  usetype 0xe21 any backpack
+  @target pet
+  pause 2500
+endwhile
+

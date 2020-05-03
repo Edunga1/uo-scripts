@@ -1,0 +1,11 @@
+promptalias mob
+if not @findalias mob
+  stop
+endif
+virtue honor
+waitfortarget 500
+target! mob
+msg 'all kill'
+waitfortarget 500
+target! mob
+

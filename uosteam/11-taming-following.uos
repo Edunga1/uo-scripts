@@ -1,0 +1,46 @@
+@clearjournal
+unsetalias ing
+promptalias creature
+if not @findalias creature
+  stop
+endif
+while not dead self
+  // move to target
+  @setalias mvtarget creature
+  while not inrange 'mvtarget' 2
+    if @x 'mvtarget' > x 'self' and @y 'mvtarget' > y 'self'
+      walk 'Southeast'
+    elseif @x 'mvtarget' < x 'self' and @y 'mvtarget' > y 'self'
+      walk 'Southwest'
+    elseif @x 'mvtarget' > x 'self' and @y 'mvtarget' < y 'self'
+      walk 'Northeast'
+    elseif @x 'mvtarget' < x 'self' and @y 'mvtarget' < y 'self'
+      walk 'Northwest'
+    elseif @x 'mvtarget' > x 'self' and @y 'mvtarget' == y 'self'
+      walk 'East'
+    elseif @x 'mvtarget' < x 'self' and @y 'mvtarget' == y 'self'
+      walk 'West'
+    elseif @x 'mvtarget' == x 'self' and @y 'mvtarget' > y 'self'
+      walk 'South'
+    elseif @x 'mvtarget' == x 'self' and @y 'mvtarget' < y 'self'
+      walk 'North'
+    endif
+    pause 200
+  endwhile
+  if @injournal 'You fail to tame'
+    @clearjournal
+    sysmsg 'YOUI FAILED'
+    unsetalias ing
+  endif
+  if @findalias ing
+    continue
+  endif
+  useskill 'Animal taming'
+  target creature
+  pause 25
+  if @injournal 'You start to tame'
+    @clearjournal
+    @setalias ing creature
+  endif
+endwhile
+

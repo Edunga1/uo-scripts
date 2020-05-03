@@ -1,0 +1,9 @@
+if mounted self
+  useobject self
+else
+  if not @findalias pet or not @findobject pet
+    promptalias pet
+  endif
+  useobject pet
+endif
+
