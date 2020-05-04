@@ -1,0 +1,22 @@
+while not dead self
+  // init
+  clearjournal
+  // do
+  usetype 0xe9d
+  useskill discordance
+  waitfortarget 500
+  @getenemy any 'closet'
+  @target enemy
+  //findtype 0x80 '1218'
+  //@target found
+  // delay
+  if @injournal "jarring"
+    pause 17000
+  elseif @injournal "already"
+    ignoreobject found
+    pause 20000
+  else
+    pause 5000
+  endif
+endwhile
+
