@@ -19,8 +19,7 @@ else
     endwhile
     pause 1000
   elseif skill 'magery' < 100
-    // cast 'mana vampire' 'self'
-    cast 'flame strike' 'last'
+    cast 'mana vampire' 'self'
     pause 1000
   else
     headmsg 'Magery complete!'
