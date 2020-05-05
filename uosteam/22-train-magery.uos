@@ -1,0 +1,30 @@
+if @injournal 'insufficient mana'
+  clearjournal
+  useskill 'meditation'
+  while mana < maxmana
+  endwhile
+else
+  if skill 'magery' < 30
+    headmsg 'Buy more skill!'
+    stop
+  elseif skill 'magery' < 45
+    cast 'bless' 'self'
+    pause 1000
+  elseif skill 'magery' < 55
+    cast 'Magic Reflection'
+    pause 1000
+  elseif skill 'magery' < 75
+    cast 'invisibility' 'self'
+    while waitingfortarget
+    endwhile
+    pause 1000
+  elseif skill 'magery' < 100
+    // cast 'mana vampire' 'self'
+    cast 'flame strike' 'last'
+    pause 1000
+  else
+    headmsg 'Magery complete!'
+    stop
+  endif
+endif
+
