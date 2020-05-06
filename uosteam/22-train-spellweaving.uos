@@ -1,0 +1,23 @@
+if @injournal 'insufficient mana'
+  clearjournal
+  useskill 'meditation'
+  while mana < maxmana
+  endwhile
+else
+  if skill 'Spellweaving' < 33
+    cast 'Arcane Circle'
+  elseif skill 'Spellweaving' < 66
+    cast 'Reaper Form'
+    pause 1000
+  elseif skill 'Spellweaving' < 90
+    cast 'Wildfire' 'self'
+    pause 1000
+  elseif skill 'Spellweaving' < 120
+    cast 'Word of Death' 'last'
+    pause 2500
+  else
+    headmsg 'complete!'
+    stop
+  endif
+endif
+
