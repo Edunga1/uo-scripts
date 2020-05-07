@@ -18,19 +18,19 @@ while not dead 'self'
       cast 'Arcane Circle'
     elseif skill 'Spellweaving' < 35
       cast 'Thunderstorm'
-      pause 1000
+      pause 500
     elseif skill 'Spellweaving' < 52
       cast 'Reaper Form'
-      pause 1000
+      pause 500
     elseif skill 'Spellweaving' < 77
       cast 'Essence of Wind'
-      pause 1000
+      pause 500
     elseif skill 'Spellweaving' < 90
       cast 'Wildfire' 'self'
-      pause 1000
+      pause 500
     elseif skill 'Spellweaving' < 120
-      cast 'Word of Death' 'last'
-      pause 2500
+      cast 'Word of Death' 'self'
+      pause 500
     else
       headmsg 'complete!'
       stop
