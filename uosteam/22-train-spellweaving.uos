@@ -9,7 +9,7 @@ while not dead 'self'
     endwhile
     clearjournal
   else
-    if hits < maxhits
+    if hits < 50
       bigheal 'self'
       pause 500
       continue
