@@ -1,23 +1,40 @@
-if @injournal 'insufficient mana'
-  clearjournal
-  useskill 'meditation'
-  while mana < maxmana
-  endwhile
-else
-  if skill 'Spellweaving' < 33
-    cast 'Arcane Circle'
-  elseif skill 'Spellweaving' < 66
-    cast 'Reaper Form'
-    pause 1000
-  elseif skill 'Spellweaving' < 90
-    cast 'Wildfire' 'self'
-    pause 1000
-  elseif skill 'Spellweaving' < 120
-    cast 'Word of Death' 'last'
-    pause 2500
+while not dead 'self'
+  if @injournal 'insufficient mana'
+    clearjournal
+    while mana < maxmana
+      if not @injournal 'You enter a meditative trance.'
+        useskill 'Meditation'
+        pause 1000
+      endif
+    endwhile
+    clearjournal
   else
-    headmsg 'complete!'
-    stop
+    if hits < maxhits
+      bigheal 'self'
+      pause 500
+      continue
+    endif
+    if skill 'Spellweaving' < 20
+      cast 'Arcane Circle'
+    elseif skill 'Spellweaving' < 35
+      cast 'Thunderstorm'
+      pause 1000
+    elseif skill 'Spellweaving' < 52
+      cast 'Reaper Form'
+      pause 1000
+    elseif skill 'Spellweaving' < 77
+      cast 'Essence of Wind'
+      pause 1000
+    elseif skill 'Spellweaving' < 90
+      cast 'Wildfire' 'self'
+      pause 1000
+    elseif skill 'Spellweaving' < 120
+      cast 'Word of Death' 'last'
+      pause 2500
+    else
+      headmsg 'complete!'
+      stop
+    endif
   endif
-endif
+endwhile
 
