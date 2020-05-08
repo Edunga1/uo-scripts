@@ -1,0 +1,22 @@
+// pet healing + WoD to enemy
+sysmsg 'pet healing + WoD is running.'
+if not @findalias pet or not @findobject pet
+  sysmsg 'TARGET A PET' 60
+  promptalias pet
+endif
+if not @findalias mob or not @findobject mob
+  sysmsg 'TARGET A ENEMY' 25
+  promptalias mob
+endif
+while not dead sef
+  if hits pet <= 90
+    bigheal pet
+  endif
+  if not @findalias mob or not @findobject mob
+    continue
+  endif
+  if hits mob <= 30
+    cast 'word of death' mob
+  endif
+endwhile
+

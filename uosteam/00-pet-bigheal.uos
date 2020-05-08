@@ -1,0 +1,16 @@
+if not findalias pet or not findobject pet
+  promptalias pet
+endif
+while not dead self
+  if not @findobject pet
+    continue
+  endif
+  if hits pet >= 90
+    continue
+  endif
+  if not @inrange pet 10
+    continue
+  endif
+  bigheal pet
+endwhile
+
