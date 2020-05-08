@@ -1,0 +1,19 @@
+while not dead 'self'
+  if @injournal 'insufficient mana'
+    clearjournal
+    while mana < maxmana
+      if not @injournal 'You enter a meditative trance.'
+        useskill 'Meditation'
+        pause 1000
+      endif
+    endwhile
+    clearjournal
+  else
+    if skill 'spirit speak' >= 100
+      headmsg 'Necromancy complete!'
+      stop
+    endif
+    cast 'curse weapon'
+  endif
+endwhile
+
