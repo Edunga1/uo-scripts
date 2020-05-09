@@ -1,0 +1,26 @@
+if not findalias 'mvtarget'
+  sysmsg 'Alias Not Found: mvtarget'
+  stop
+endif
+// move to target
+while not inrange 'mvtarget' 1
+  if @x 'mvtarget' > x 'self' and @y 'mvtarget' > y 'self'
+    walk 'Southeast'
+  elseif @x 'mvtarget' < x 'self' and @y 'mvtarget' > y 'self'
+    walk 'Southwest'
+  elseif @x 'mvtarget' > x 'self' and @y 'mvtarget' < y 'self'
+    walk 'Northeast'
+  elseif @x 'mvtarget' < x 'self' and @y 'mvtarget' < y 'self'
+    walk 'Northwest'
+  elseif @x 'mvtarget' > x 'self' and @y 'mvtarget' == y 'self'
+    walk 'East'
+  elseif @x 'mvtarget' < x 'self' and @y 'mvtarget' == y 'self'
+    walk 'West'
+  elseif @x 'mvtarget' == x 'self' and @y 'mvtarget' > y 'self'
+    walk 'South'
+  elseif @x 'mvtarget' == x 'self' and @y 'mvtarget' < y 'self'
+    walk 'North'
+  endif
+  pause 500
+endwhile
+
