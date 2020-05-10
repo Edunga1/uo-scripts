@@ -1,4 +1,4 @@
-@clearjournal
+rjournal
 unsetalias ing
 promptalias creature
 if not @findalias creature
@@ -10,8 +10,7 @@ while not dead self
     @clearjournal
     unsetalias ing
   elseif @injournal 'It seems to accept you as master.'
-    @clear journal
-    unsetalias ing
+    break
   endif
   if @findalias ing
     continue
@@ -26,4 +25,7 @@ while not dead self
     @setalias ing creature
   endif
 endwhile
+// clean
+@clearjournal
+unsetalias ing
 
