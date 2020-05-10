@@ -1,0 +1,29 @@
+@clearjournal
+unsetalias ing
+promptalias creature
+if not @findalias creature
+  stop
+endif
+while not dead self
+  // check is taming...
+  if @injournal 'You fail to tame'
+    @clearjournal
+    unsetalias ing
+  elseif @injournal 'It seems to accept you as master.'
+    @clear journal
+    unsetalias ing
+  endif
+  if @findalias ing
+    continue
+  endif
+  // try to tame
+  useskill 'Animal taming'
+  target creature
+  pause 25
+  // check start
+  if @injournal 'You start to tame'
+    @clearjournal
+    @setalias ing creature
+  endif
+endwhile
+
