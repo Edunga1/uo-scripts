@@ -8,7 +8,7 @@ if not @findalias mob or not @findobject mob
   sysmsg 'TARGET A ENEMY' 25
   promptalias mob
 endif
-while not dead sef
+while @findobject mob
   if hits pet <= 90
     bigheal pet
   endif
@@ -17,6 +17,7 @@ while not dead sef
   endif
   if hits mob <= 30
     cast 'word of death' mob
+    pause 500
   endif
 endwhile
 
