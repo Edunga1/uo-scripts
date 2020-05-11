@@ -1,0 +1,12 @@
+if buffexists 1124
+  while buffexists 1124
+    cast 'wraith form'
+    pause 2000
+  endwhile
+elseif not buffexists 1124
+  while not buffexists 1124
+    cast 'wraith form'
+    pause 2000
+  endwhile
+endif
+
