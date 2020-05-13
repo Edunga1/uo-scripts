@@ -1,29 +1,33 @@
-if @injournal 'insufficient mana'
-  clearjournal
-  useskill 'meditation'
-  while mana < maxmana
-  endwhile
-else
-  if skill 'magery' < 30
-    headmsg 'Buy more skill!'
-    stop
-  elseif skill 'magery' < 45
-    cast 'bless' 'self'
-    pause 1000
-  elseif skill 'magery' < 55
-    cast 'Magic Reflection'
-    pause 1000
-  elseif skill 'magery' < 75
-    cast 'invisibility' 'self'
-    while waitingfortarget
+while not dead 'self'
+  if @injournal 'insufficient mana'
+    clearjournal
+    while mana < maxmana
+      if not @injournal 'You enter a meditative trance.'
+        useskill 'Meditation'
+        pause 1000
+      endif
     endwhile
-    pause 1000
-  elseif skill 'magery' < 100
-    cast 'mana vampire' 'self'
-    pause 1000
+    clearjournal
   else
-    headmsg 'Magery complete!'
-    stop
+    if skill 'magery' < 30
+      cast 'Agility' 'self'
+      pause 600
+    elseif skill 'magery' < 45
+      cast 'bless' 'self'
+      pause 600
+    elseif skill 'magery' < 55
+      cast 'Dispel' 'self'
+      pause 600
+    elseif skill 'magery' < 75
+      cast 'invisibility' 'self'
+      pause 600
+    elseif skill 'magery' < 100
+      cast 'mana vampire' 'self'
+      pause 600
+    else
+      headmsg 'Magery complete!'
+      stop
+    endif
   endif
-endif
+endwhile
 
