@@ -1,0 +1,41 @@
+// need to type count of boards
+if not findalias chest
+  promptalias chest
+endif
+if not findalias homerune
+  promptalias homerune
+endif
+if not findalias vesperrune
+  promptalias vesperrune
+endif
+// prepare
+useobject chest
+pause 1000
+// main
+while @findtype 0x1bd7 0 chest
+  // move board to backpack
+  moveitem found backpack 0 0 0 370
+  pause 600
+  // recall to vesper
+  cast 'recall'
+  waitfortarget 2000
+  target vesperrune
+  pause 1000
+  // proc
+  while @findtype 0x1bd7
+    useobject 0x4001f551
+    waitforgump 0x4df35d4b 15000
+    replygump 0x4df35d4b 301
+    waitforprompt 15000
+    pause 1000
+  endwhile
+  // recall to home
+  cast 'recall'
+  waitfortarget 2000
+  target homerune
+  pause 1000
+  // prepare
+  useobject chest
+  pause 600
+endwhile
+
