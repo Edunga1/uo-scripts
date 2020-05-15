@@ -1,0 +1,22 @@
+if not findalias runebooktofill
+  headmsg 'Target a runebook'
+  promptalias runebooktofill
+endif
+if not @findtype 0x1f14
+  headmsg 'No runes'
+  stop
+endif
+cast 'mark'
+waitfortarget 2000
+target found
+pause 600
+@clearjournal
+moveitem found runebooktofill
+pause 600
+while @injournal 'This runebook is full.' system
+  @clearjournal
+  promptalias runebooktofill
+  moveitem found runebooktofill
+  pause 600
+endwhile
+
