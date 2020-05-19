@@ -6,15 +6,28 @@ if not @findalias mob or not @findobject mob
   sysmsg 'TARGET A ENEMY' 25
   promptalias mob
 endif
-while @findobject mob
+while not dead self
+  if not @findobject mob
+    break
+  endif
+  // heal pet
   if hits pet <= 70
     bigheal pet
-  elseif hits mob <= 30 and mana > 30
+    continue
+  endif
+  // spell enemy
+  if not @inrange mob 10
+    continue
+  endif
+  if hits mob < 28 and mana > 30
     cast 'word of death' mob
-  elseif mana >= maxmana and inrange mob 10
+    continue
+  endif
+  if mana >= maxmana
     cast 707
     waitfortarget 5000
     target mob
+    continue
   endif
 endwhile
 
