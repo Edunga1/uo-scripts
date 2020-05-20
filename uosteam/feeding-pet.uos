@@ -1,0 +1,30 @@
+// pet eats vegetable
+if not listexists petsvege
+  createlist petsvege
+  pushlist petsvege 0x115 // cu sidhe
+endif
+// pet eats meet
+if not listexists petmeats
+  createlist petmeats
+  pushlist petmeats 0x317 // beetle
+  pushlist petmeats 0xa9 // fire beetle
+endif
+// check pet
+if not @findalias pet or not @findobject pet
+  promptalias pet
+endif
+// retrive
+for 0 in petsvege
+  if graphic pet == petsvege[]
+    feed pet 'fruits and vegetables' any 1
+    stop
+  endif
+endfor
+// retrive
+for 0 in petmeats
+  if graphic pet == petmeats[]
+    feed pet 'meat' any 1
+    stop
+  endif
+endfor
+
