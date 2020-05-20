@@ -1,4 +1,3 @@
-// need to type count of boards
 if not findalias chest
   promptalias chest
 endif
@@ -14,7 +13,11 @@ pause 1000
 // main
 while @findtype 0x1bd7 0 chest
   // move board to backpack
-  moveitem found backpack 0 0 0 370
+  if property 'weight' found > 370
+    moveitem found backpack 0 0 0 370
+  else
+    moveitem found backpack 0 0 0
+  endif
   pause 600
   // recall to vesper
   cast 'recall'
