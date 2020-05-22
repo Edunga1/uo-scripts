@@ -1,0 +1,173 @@
+; user adjustment
+set %master SQAE
+set %masterpet AKTO
+set %mypet YTS
+
+set %bosses XO_ZO_SO_NO_YO_WO
+set %mob #false
+set %petAttack #false
+set %door1 EINRJMD
+set %doorx1 471
+set %doory1 428
+set %door2 XINRJMD
+set %doorx2 462
+set %doory2 494
+set %door3 EJNRJMD
+set %doorx3 403
+set %doory3 502
+set %door4 QONRJMD
+set %doorx4 357
+set %doory4 476
+set %door5 JPNRJMD
+set %doorx5 361
+set %doory5 433
+
+
+; ========================= Main
+gosub setupMaster
+
+MAIN:
+
+gosub followMaster
+gosub isStuckFollow
+if #result
+  gosub enterBossroom
+
+
+gosub isBattle
+if #result
+{
+  gosub standBattle
+  gosub petAttack
+  gosub unmountPet
+}
+else
+{
+  gosub standPeace
+  gosub mountPet
+}
+
+goto MAIN
+; ========================= End of Main
+
+
+; services
+sub setupMaster
+  if %master <> -1
+  {
+    return
+  }
+  gosub getTargetId
+  set %master #result
+return
+
+
+sub followMaster
+  finditem %master
+  if #finddist > 2
+  {
+    event pathfind #findx #findy #findz
+    wait 5
+    ;move #findx #findy 0 5
+  }
+return
+
+
+sub isStuckFollow
+  gosub searchJournal Can't_get_there 5
+return #result
+
+
+sub enterBossroom
+  for %i 1 5
+  {
+    finditem %door . %i G_10
+    if #findkind = 1
+    {
+      event pathfind %doorx . %i %doory . %i 0
+      wait 1s
+    }
+  }
+return
+
+
+sub isBattle
+  finditem %masterpet
+  if #findkind <> 1
+    return #false
+    
+  finditem %bosses
+  if #findkind <> 1
+    return #false
+    
+return #true
+
+
+sub standBattle
+  finditem %bosses
+  set %mob #findid
+return
+
+
+sub standPeace
+  set %petAttack #false
+return
+
+
+sub petAttack
+  if %petAttack
+    return
+  set %petAttack #true
+  set #ltargetid %mob
+  event macro 27 0
+return
+
+
+sub unmountPet
+  finditem %mypet
+  if #findkind = 1
+    return
+  event
+  set #lobjectid #charid
+  event macro 17
+return
+
+
+sub mountPet
+  finditem %mypet G_1
+  if #findkind <> 1
+    return
+  set #lobjectid %mypet
+  event macro 17
+return
+
+
+; utils
+sub getTargetId
+  set #targCurs 1
+  target 10s
+  while #targCurs = 1
+  {
+  }
+return #ltargetid
+
+
+sub searchJournal
+  ;set %jrnl #jindex - %2
+  ;while %jrnl <= #jindex
+  ;{
+  ;  scanjournal %jrnl
+  ;  if %1 in #journal
+  ;     return #true
+  ;  set %jrnl %jrnl + 1
+  ;}
+  scanjournal #jindex
+  if %1 in #journal
+  {
+    return #true
+  }
+return #false
+
+
+; end
+halt
