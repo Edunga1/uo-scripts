@@ -1,0 +1,11 @@
+while #true
+{
+  finditem HJC G_1
+  if #findkind = 1
+  {
+    set #lobjectid #findid
+    event macro 17
+    wait 1s
+  }
+}
+halt
