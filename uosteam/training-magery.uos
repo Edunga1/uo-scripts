@@ -25,7 +25,7 @@ while not dead 'self'
       cast 'invisibility' 'self'
       pause 600
     elseif skill 'magery' < 100
-      cast 'mana vampire' 'self'
+      cast 'mass dispel' 'self'
       pause 600
     else
       headmsg 'Magery complete!'
