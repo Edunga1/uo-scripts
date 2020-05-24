@@ -16,7 +16,10 @@ while not dead 'self'
       cast 'bless' 'self'
       pause 600
     elseif skill 'magery' < 55
-      cast 'Dispel' 'self'
+      cast 'greater heal' 'self'
+      pause 600
+    elseif skill 'magery' < 65
+      cast 'magic reflection' 'self'
       pause 600
     elseif skill 'magery' < 75
       cast 'invisibility' 'self'
