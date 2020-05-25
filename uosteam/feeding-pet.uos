@@ -2,12 +2,14 @@
 if not listexists petsvege
   createlist petsvege
   pushlist petsvege 0x115 // cu sidhe
+  pushlist petsvege 0x7a // unicorn
 endif
 // pet eats meet
 if not listexists petmeats
   createlist petmeats
   pushlist petmeats 0x317 // beetle
   pushlist petmeats 0xa9 // fire beetle
+  pushlist petmeats 0x509 // najasaurus
 endif
 // check pet
 if not @findalias pet or not @findobject pet
