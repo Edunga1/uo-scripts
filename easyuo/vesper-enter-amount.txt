@@ -1,0 +1,12 @@
+set %box LGRYJMD
+set %board TLK
+while
+{
+  finditem %box
+  if #findkind = 1
+  {
+     finditem %board
+     msg #findstack $
+  }
+  wait 1s
+}
