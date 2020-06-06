@@ -6,7 +6,7 @@ if not @findalias mob or not @findobject mob
   sysmsg 'TARGET A ENEMY' 25
   promptalias mob
 endif
-while not dead self
+while not dead
   if not @findobject mob
     break
   endif

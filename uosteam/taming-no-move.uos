@@ -4,7 +4,7 @@ promptalias creature
 if not @findalias creature
   stop
 endif
-while not dead self
+while not dead
   // check is taming...
   if @injournal 'You fail to tame'
     @clearjournal

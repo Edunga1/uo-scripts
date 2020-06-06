@@ -1,7 +1,7 @@
 if not findalias pet or not findobject pet
   promptalias pet
 endif
-while not dead self
+while not dead
   if not @findobject pet
     continue
   endif
@@ -18,7 +18,7 @@ endwhile
 if not findalias pet or not findobject pet
   promptalias pet
 endif
-while not dead self
+while not dead
   if not @findobject pet
     continue
   endif

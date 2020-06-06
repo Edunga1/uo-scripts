@@ -1,4 +1,4 @@
-while not dead 'self'
+while not dead
   if @injournal 'insufficient mana'
     clearjournal
     while mana < maxmana

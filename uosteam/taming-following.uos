@@ -4,7 +4,7 @@ promptalias creature
 if not @findalias creature
   stop
 endif
-while not dead self
+while not dead
   // move to target
   @setalias mvtarget creature
   while not inrange 'mvtarget' 2

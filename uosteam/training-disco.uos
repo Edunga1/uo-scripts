@@ -1,4 +1,4 @@
-while not dead self
+while not dead
   // init
   clearjournal
   // do
