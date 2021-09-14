@@ -1,0 +1,33 @@
+if not listexists swapitems
+  // update this serials.
+  createlist swapitems
+  pushlist swapitems 0x401dab89
+  pushlist swapitems 0x40073a69
+  pushlist swapitems 0x40002e19
+  pushlist swapitems 0x40081789
+  pushlist swapitems 0x4007eed2
+  pushlist swapitems 0x40074282
+  // item aliases to print. list size should same as swapitems
+  if listexists swapitemaliases
+    clearlist swapitemaliases
+  endif
+  createlist swapitemaliases
+  pushlist swapitemaliases 'default'
+  pushlist swapitemaliases 'Arachnid Slayer'
+  pushlist swapitemaliases 'Repond Slayer'
+  pushlist swapitemaliases 'Undead Slayer'
+  pushlist swapitemaliases 'Demon Slayer'
+  pushlist swapitemaliases 'Reptile Slayer'
+endif
+if findobject! 'righthand'
+  clearhands 'right'
+  pause 500
+endif
+equipitem swapitems[0] 1
+pushlist swapitems swapitems[0]
+poplist swapitems front
+pushlist swapitemaliases swapitemaliases[0]
+poplist swapitemaliases front
+sysmsg 'Swap item!' 33
+sysmsg swapitemaliases[0] 33
+
