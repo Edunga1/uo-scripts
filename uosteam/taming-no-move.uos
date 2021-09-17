@@ -1,4 +1,4 @@
-rjournal
+@clearjournal
 unsetalias ing
 promptalias creature
 if not @findalias creature
