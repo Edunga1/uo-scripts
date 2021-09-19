@@ -1,0 +1,25 @@
+// pet healing + WoD to enemy
+headmsg 'duo pet healing + firebaoll + WoD is running.'
+if not @findalias pet or not @findobject pet
+  headmsg 'TARGET A PET' 60
+  promptalias pet
+endif
+if not @findalias mob or not @findobject mob
+  headmsg 'TARGET A ENEMY' 25
+  promptalias mob
+endif
+while @findobject mob
+  if hits pet <= 60
+    bigheal pet
+  endif
+  if not @findalias mob or not @findobject mob
+    continue
+  endif
+  if hits mob > 25 and mana > 30
+    cast 'fireball' mob
+  endif
+  if hits mob <= 25 and mana >= 60
+    cast 'word of death' mob
+    pause 500
+  endif
+endwhile
