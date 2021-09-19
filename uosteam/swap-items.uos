@@ -26,8 +26,8 @@ endif
 equipitem swapitems[0] 1
 pushlist swapitems swapitems[0]
 poplist swapitems front
-sysmsg 'Swap item!' 33
-sysmsg swapitemaliases[0] 33
+headmsg 'Swap item!' 33
+headmsg swapitemaliases[0] 33
 pushlist swapitemaliases swapitemaliases[0]
 poplist swapitemaliases front
 

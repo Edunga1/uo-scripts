@@ -1,11 +1,11 @@
 // pet healing + WoD to enemy
-sysmsg 'pet healing + WoD is running.'
+headmsg 'pet healing + WoD is running.'
 if not @findalias pet or not @findobject pet
-  sysmsg 'TARGET A PET' 60
+  headmsg 'TARGET A PET' 60
   promptalias pet
 endif
 if not @findalias mob or not @findobject mob
-  sysmsg 'TARGET A ENEMY' 25
+  headmsg 'TARGET A ENEMY' 25
   promptalias mob
 endif
 while @findobject mob
