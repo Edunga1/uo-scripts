@@ -17,7 +17,7 @@ class Item:
 
         self.item_name = ''
         self.target_name = ''
-        
+
     def find(self):
         res = FindType(self.type, self.range, self.location, self.color)
         if res:
@@ -37,7 +37,7 @@ class Item:
         if self.targets:
             msg += ' -> {}'.format(self.target_name)
         HeadMsg(msg, 'self', 45)
-    
+
     def msg_no_target(self):
         HeadMsg('# {} -> ?'.format(self.item_name), 'self', 45)
 
